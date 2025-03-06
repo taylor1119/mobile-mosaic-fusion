@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 0 0% 9%;
+    --primary: 210 33% 16%;  /* Dark blue color for Jacobi */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -33,7 +33,7 @@
     --input: 0 0% 89%;
     --ring: 0 0% 70%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;  /* Adjusted for Jacobi's more subtle corners */
   }
 
   .dark {
@@ -89,7 +89,7 @@
   }
   
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-4xl md:text-5xl;
   }
   
   h2 {
@@ -122,6 +122,16 @@
 
 @layer utilities {
   .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    @apply py-16 md:py-24;
   }
+}
+
+/* Specific Jacobi Robotics styles */
+.jacobi-dark-blue {
+  background-color: #1a2e3a;
+  color: white;
+}
+
+.jacobi-light-bg {
+  background-color: #f5f7fa;
 }

@@ -33,6 +33,11 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        jacobi: {
+          dark: "#1a2e3a",
+          medium: "#2a3e4a",
+          light: "#f5f7fa",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
