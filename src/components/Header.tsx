@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,8 +20,15 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    document.body.style.overflow = isMenuOpen ? '' : 'hidden';
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    document.body.style.overflow = '';
+  };
 
   return (
     <header 
@@ -30,9 +37,9 @@ const Header = () => {
         isScrolled ? "bg-white shadow-subtle" : "bg-white"
       )}
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="text-xl font-semibold flex items-center">
+          <a href="/" className="text-xl font-semibold flex items-center">
             <img 
               src="/lovable-uploads/9150c33c-d3f7-4c4e-8ef1-ecd850631701.png" 
               alt="Jacobi Robotics" 
@@ -41,31 +48,24 @@ const Header = () => {
           </a>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <div className="relative group">
-              <a href="#" className="text-sm font-medium text-gray-700 hover:text-accent flex items-center">
-                Developers
-                <ChevronDown size={16} className="ml-1" />
-              </a>
-            </div>
-            <div className="relative group">
-              <a href="#" className="text-sm font-medium text-gray-700 hover:text-accent flex items-center">
-                Solutions
-                <ChevronDown size={16} className="ml-1" />
-              </a>
-            </div>
-            <div className="relative group">
-              <a href="#" className="text-sm font-medium text-gray-700 hover:text-accent flex items-center">
-                Company
-                <ChevronDown size={16} className="ml-1" />
-              </a>
-            </div>
-            <a href="#" className="text-sm font-medium text-gray-700 hover:text-accent">Blog</a>
+          <nav className="hidden md:flex items-center space-x-6">
+            <a href="#" className="text-sm font-medium text-gray-700 hover:text-accent">
+              Products
+            </a>
+            <a href="#" className="text-sm font-medium text-gray-700 hover:text-accent">
+              Solutions
+            </a>
+            <a href="#" className="text-sm font-medium text-gray-700 hover:text-accent">
+              Resources
+            </a>
+            <a href="#" className="text-sm font-medium text-gray-700 hover:text-accent">
+              Company
+            </a>
             <a 
-              href="#" 
-              className="px-6 py-2 bg-white text-gray-700 rounded-full font-medium border-2 border-gray-300 hover:bg-gray-50 transition-colors"
+              href="/contact" 
+              className="px-5 py-2 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-colors"
             >
-              Request a Demo
+              Contact Us
             </a>
           </nav>
           
@@ -87,41 +87,41 @@ const Header = () => {
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <nav className="flex flex-col items-center justify-center h-full space-y-8 text-lg">
+        <nav className="flex flex-col p-4 space-y-6 text-lg">
           <a 
             href="#" 
-            className="font-medium text-gray-700 hover:text-accent"
+            className="font-medium text-gray-700 hover:text-accent py-2"
             onClick={closeMenu}
           >
-            Developers
+            Products
           </a>
           <a 
             href="#" 
-            className="font-medium text-gray-700 hover:text-accent"
+            className="font-medium text-gray-700 hover:text-accent py-2"
             onClick={closeMenu}
           >
             Solutions
           </a>
           <a 
             href="#" 
-            className="font-medium text-gray-700 hover:text-accent"
+            className="font-medium text-gray-700 hover:text-accent py-2"
+            onClick={closeMenu}
+          >
+            Resources
+          </a>
+          <a 
+            href="#" 
+            className="font-medium text-gray-700 hover:text-accent py-2"
             onClick={closeMenu}
           >
             Company
           </a>
           <a 
-            href="#" 
-            className="font-medium text-gray-700 hover:text-accent"
+            href="/contact" 
+            className="px-5 py-2 bg-accent text-white rounded-lg font-medium hover:bg-accent/90 transition-colors text-center mt-4"
             onClick={closeMenu}
           >
-            Blog
-          </a>
-          <a 
-            href="#" 
-            className="px-6 py-3 bg-white text-gray-700 rounded-full font-medium border-2 border-gray-300 hover:bg-gray-50 transition-colors"
-            onClick={closeMenu}
-          >
-            Request a Demo
+            Contact Us
           </a>
         </nav>
       </div>

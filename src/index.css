@@ -14,8 +14,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 210 33% 16%;  /* Dark blue color for Jacobi */
-    --primary-foreground: 0 0% 100%;
+    --primary: 210 100% 98%;  /* Light blue for background areas */
+    --primary-foreground: 210 33% 16%;
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 10%;
@@ -23,17 +23,17 @@
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 45%;
 
-    --accent: 210 100% 50%;
+    --accent: 210 100% 50%;  /* Blue accent color for buttons and links */
     --accent-foreground: 210 100% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 89%;
-    --input: 0 0% 89%;
-    --ring: 0 0% 70%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 210 100% 50%;  /* Match accent color for focus rings */
 
-    --radius: 0.5rem;  /* Adjusted for Jacobi's more subtle corners */
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -63,7 +63,7 @@
 
     --border: 0 0% 25%;
     --input: 0 0% 25%;
-    --ring: 0 0% 35%;
+    --ring: 210 100% 55%;
   }
 }
 
@@ -73,7 +73,7 @@
   }
   
   html {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
@@ -85,23 +85,23 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medium leading-tight tracking-tight;
+    @apply font-medium leading-tight tracking-tight text-gray-900;
   }
   
   h1 {
-    @apply text-4xl md:text-5xl;
-  }
-  
-  h2 {
     @apply text-3xl md:text-4xl;
   }
   
-  h3 {
+  h2 {
     @apply text-2xl md:text-3xl;
   }
   
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+  
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed text-gray-600;
   }
 }
 
@@ -122,16 +122,19 @@
 
 @layer utilities {
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-12 md:py-16;
   }
 }
 
-/* Specific Jacobi Robotics styles */
-.jacobi-dark-blue {
-  background-color: #1a2e3a;
-  color: white;
+/* Modern Jacobi Robotics styles */
+.jacobi-blue {
+  color: hsl(var(--accent));
 }
 
-.jacobi-light-bg {
-  background-color: #f5f7fa;
+.jacobi-bg-light {
+  background-color: hsl(var(--primary));
+}
+
+.jacobi-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
